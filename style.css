@@ -730,20 +730,13 @@ h1, h2, h3 {
     line-height: 1.2;
   }
   
-  .animated-text {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 20px;
-    /* rest of the styles remain the same */
-  }
   
   @media (max-width: 480px) {
     .hero-content h1 {
       font-size: 2rem;
     }
     
-    .animated-text {
-      font-size: 1.2rem;
-    }
+ 
   }
 
 h1 { /* Replace lines 627-635 with more responsive typography */
@@ -803,25 +796,7 @@ h3 {
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
-.animated-text {
-  font-size: 2em;
-  margin-bottom: 20px;
-  font-family: 'Orbitron', sans-serif;
-  color: #00ffff;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-  white-space: nowrap;
-  border-right: 3px solid #00ffff;
-  width: auto;
-  animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
-  animation-fill-mode: forwards;
-  font-weight: 1000;
-  background: linear-gradient(45deg, #00ffff, #ff00ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(255, 0, 255, 0.5);
-  letter-spacing: 1px;
-}
+
 
 /* Updated animation */
 @keyframes typing {
@@ -1379,7 +1354,7 @@ footer {
       font-size: 3rem;
     }
     
-    .animated-text {
+    .t {
       font-size: 1.8rem;
     }
     
@@ -1451,7 +1426,6 @@ footer {
     .hero { padding: 100px 20px; }
   /* Responsive Design for Smaller Screens */
   
-  /* Adjustments for smaller screens */
   
   @media (max-width: 768px) {
     .section-title { font-size: 2rem; }
