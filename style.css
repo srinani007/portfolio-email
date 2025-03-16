@@ -177,17 +177,32 @@ body.loaded::before {
     }
 }
 
-  /* Header and Navigation */
+/* Header and Navigation */
+.neon-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;  /* Ensures full-width */
+  padding: 10px 5%;  /* Balanced padding */
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);  /* Slight transparency for better UI */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {  
   .neon-header {
-    position:fixed;
-    top: 0;
-    width: 90%;
-    padding: 10px;
-    z-index: 1000;
-    transition: var(--transition);
+      padding: 10px 3%;  /* Reduce side padding on smaller screens */
   }
-  
-  
+}
+
+@media screen and (max-width: 480px) {  
+  .neon-header {
+      padding: 10px 2%;  
+      font-size: 14px;  /* Adjust text size for small devices */
+  }
+}
+
   
   .responsive-nav {
     display: flex;
