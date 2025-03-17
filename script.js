@@ -1,138 +1,117 @@
-// Smooth scrolling for nav links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Smooth scrolling for nav links using event delegation
+document.addEventListener("click", (e) => {
+    const target = e.target.closest("a[href^='#']");
+    if (target) {
         e.preventDefault();
-        const targetElement = document.querySelector(this.getAttribute('href'));
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
+        const targetElement = document.querySelector(target.getAttribute("href"));
+        targetElement?.scrollIntoView({ behavior: "smooth" });
+    }
 });
 
 // Toggle hamburger menu
-document.querySelector('.hamburger')?.addEventListener('click', function () {
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !expanded);
-    this.classList.toggle('active');
-    const navItems = document.querySelector('.nav-items');
-    if (navItems) {
-        navItems.classList.toggle('active');
-        navItems.style.display = navItems.classList.contains('active') ? 'flex' : 'none';
-    }
+document.querySelector(".hamburger")?.addEventListener("click", function () {
+    const navItems = document.querySelector(".nav-items");
+    const expanded = this.getAttribute("aria-expanded") === "true";
+    this.setAttribute("aria-expanded", !expanded);
+    this.classList.toggle("active");
+    navItems?.classList.toggle("active");
 });
 
-// Scroll-triggered animations with Intersection Observer
+// Scroll-triggered animations using Intersection Observer
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('fade-in');
-        // Batch DOM operations for better performance
-        requestAnimationFrame(() => {
-          const elementsToFade = entry.target.querySelectorAll('.fade-in-text, .skill-card, .project-card, .timeline-item');
-          elementsToFade.forEach(element => element.classList.add('fade-in'));
-        });
-      }
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+        }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+}, { threshold: 0.1 });
 
-document.querySelectorAll('.section').forEach(section => {
-    observer.observe(section);
+document.querySelectorAll(".section").forEach((section) => observer.observe(section));
+
+// Lazy loading for images and videos
+document.querySelectorAll("img, video").forEach((media) => {
+    if ("loading" in HTMLImageElement.prototype) {
+        media.setAttribute("loading", "lazy");
+    } else {
+        // Fallback for older browsers
+        const script = document.createElement("script");
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js";
+        document.body.appendChild(script);
+    }
 });
 
 // Click outside to close menu
-document.addEventListener('click', function (event) {
-    const navLinks = document.querySelector('.nav-links');
-    const hamburger = document.querySelector('.hamburger');
+document.addEventListener("click", (event) => {
+    const navLinks = document.querySelector(".nav-links");
+    const hamburger = document.querySelector(".hamburger");
     if (navLinks && hamburger && !navLinks.contains(event.target) && !hamburger.contains(event.target)) {
-        navLinks.classList.remove('active');
-        hamburger.classList.remove('active');
+        navLinks.classList.remove("active");
+        hamburger.classList.remove("active");
     }
 });
 
-// Lazy loading for images and videos
-document.querySelectorAll('img, video').forEach(media => {
-    media.setAttribute('loading', 'lazy');
-});
-
 // Add loading state and hide loader
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-    document.querySelector('.loader')?.classList.add('hidden');
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+    document.querySelector(".loader")?.classList.add("hidden");
 });
 
-// Basic contact form submission (placeholder for backend)
-document.getElementById('contact-form')?.addEventListener('submit', function (e) {
+// Contact form submission with fetch API
+document.getElementById("contact-form")?.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const name = this.querySelector('input[name="name"]').value.trim();
-    const email = this.querySelector('input[name="email"]').value.trim();
-    const message = this.querySelector('textarea[name="message"]').value.trim();
+    const name = e.target.querySelector('input[name="name"]').value.trim();
+    const email = e.target.querySelector('input[name="email"]').value.trim();
+    const message = e.target.querySelector('textarea[name="message"]').value.trim();
 
     if (!name || !email || !message) {
-        alert('Please fill in all fields.');
+        alert("Please fill in all fields.");
         return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Please enter a valid email.');
+        alert("Please enter a valid email.");
         return;
     }
 
-    alert('Thank you for your message! This form is currently not connected to a backend service.');
+    try {
+        const response = await fetch("http://localhost:8080/api/contact/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams({ name, email, message }),
+        });
 
-    // Reset form
-    this.reset();
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.text();
+        document.getElementById("responseMessage").innerText = data;
+        e.target.reset();
+    } catch (error) {
+        console.error("Error:", error);
+    }
 });
 
 // Optional: Add particle animation
 function createParticles() {
-    const particlesContainer = document.querySelector('.particles');
+    const particlesContainer = document.querySelector(".particles");
     if (particlesContainer) {
         for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.position = 'absolute';
-            particle.style.width = `${Math.random() * 3 + 1}px`;
-            particle.style.height = particle.style.width;
-            particle.style.background = 'rgba(0, 255, 255, 0.5)';
-            particle.style.borderRadius = '50%';
-            particle.style.top = `${Math.random() * 100}vh`;
-            particle.style.left = `${Math.random() * 100}vw`;
-            particle.style.animation = `particleMove ${Math.random() * 5 + 5}s infinite linear, fadeIn 0.5s ease-in`;
+            const particle = document.createElement("div");
+            particle.className = "particle";
+            Object.assign(particle.style, {
+                position: "absolute",
+                width: `${Math.random() * 3 + 1}px`,
+                height: `${Math.random() * 3 + 1}px`,
+                background: "rgba(0, 255, 255, 0.5)",
+                borderRadius: "50%",
+                top: `${Math.random() * 100}vh`,
+                left: `${Math.random() * 100}vw`,
+                animation: `particleMove ${Math.random() * 5 + 5}s infinite linear, fadeIn 0.5s ease-in`,
+            });
             particlesContainer.appendChild(particle);
         }
     }
 }
 
-window.addEventListener('load', createParticles);
-document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("contact-form");
-    if (!form) {
-        console.error("Form with ID 'contact-form' not found!");
-        return;
-    }
-
-    form.addEventListener("submit", function(event) {
-        event.preventDefault();
-        console.log("Form submission intercepted, sending POST request...");
-
-        let formData = new FormData();
-        formData.append("name", document.getElementById("name").value);
-        formData.append("email", document.getElementById("email").value);
-        formData.append("message", document.getElementById("message").value);
-
-        fetch("http://localhost:8080/api/contact/send", {
-            method: "POST",
-            body: new URLSearchParams(formData)
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById("responseMessage").innerText = data;
-        })
-        .catch(error => console.error("Error:", error));
-    });
-});
+window.addEventListener("load", createParticles);
