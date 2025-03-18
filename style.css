@@ -1597,7 +1597,7 @@ footer .social-icons a:hover i {
 }
 
 @media (max-width: 1024px) {
-  . {
+  .container {
     padding: 100px 20px;
   }
 
