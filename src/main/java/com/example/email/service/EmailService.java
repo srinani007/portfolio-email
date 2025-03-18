@@ -13,11 +13,11 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendEmail(String name, String email, String messageContent) throws MessagingException {
+    public boolean sendEmail(String name, String email, String messageContent) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-        helper.setTo("your_email@gmail.com");  // Replace with your email
+        helper.setTo("kvsprasanth007@gmail.com");  // Replace with your email
         helper.setSubject("New Contact Form Submission");
 
         String emailBody = """
@@ -31,5 +31,6 @@ public class EmailService {
         helper.setFrom(email);
 
         mailSender.send(message);
+        return false;
     }
 }

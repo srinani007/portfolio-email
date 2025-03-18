@@ -18,7 +18,7 @@ public class EmailController {
     @PostMapping("/send")
     public String sendEmail(@RequestParam String name,
                             @RequestParam String email,
-                            @RequestParam String message) {
+                            @RequestParam String message) throws MessagingException {
         try {
             emailService.sendEmail(name, email, message);
             return "Email Sent Successfully!";
