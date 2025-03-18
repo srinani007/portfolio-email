@@ -18,6 +18,20 @@
         "list": "off"
       }
     ],
-    "no-inline-styles": "off"
-  }
+    "no-inline-styles": "off",
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "video[playsinline]"
+        ]
+      }
+    ]
+  },
+  "browserslist": [
+    "defaults",
+    "not ie 11",
+    "not and_ff <= 135",
+    "not firefox <= 135"
+  ]
 }
