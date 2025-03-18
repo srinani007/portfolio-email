@@ -8,6 +8,7 @@
   --shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
   --font-primary: 'Orbitron', sans-serif;
   --font-secondary: 'Inter', sans-serif;
+  --background-color: rgba(0, 0, 0, 0.7);
 }
 
 * {
@@ -586,7 +587,7 @@ nav .nav-links a:hover {
 }
 
 .section {
-  padding: 80px 20px;
+  padding: 100px 20px;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
@@ -1371,7 +1372,6 @@ footer .social-icons a:hover i {
   .nav-links.active {
     display: flex;
   }
-
   .cta-btn.secondary {
     font-size: 0.9em;
     padding: 8px 16px;
