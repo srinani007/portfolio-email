@@ -7,6 +7,10 @@ document.addEventListener("click", (e) => {
         targetElement?.scrollIntoView({ behavior: "smooth" });
     }
 });
+const video = document.getElementById('myVideo');
+  if (navigator.userAgent.includes('Firefox')) {
+    video.removeAttribute('playsinline'); // Optional fallback behavior
+  }
 
 // Toggle hamburger menu
 document.querySelector(".hamburger")?.addEventListener("click", function () {
