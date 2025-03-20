@@ -1521,7 +1521,7 @@ footer .social-icons a:hover i {
   }
 
   .hero {
-    padding: 80px 20px 40px;
+    padding: 80px 20px;
   }
 
   .hero-content .animated-text {
@@ -1565,7 +1565,7 @@ footer .social-icons a:hover i {
   }
 
   .scroll-indicator {
-    bottom: 10px;
+    bottom: auto;
     font-size: 12px;
   }
 }
@@ -1576,9 +1576,6 @@ footer .social-icons a:hover i {
     font-size: 1.2rem;
     padding: 10px 20px;
   }
-
-
-
   .skills-grid,
   .projects-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -1639,8 +1636,8 @@ footer .social-icons a:hover i {
   }
 
   .hero-image img {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
   }
 }
 
@@ -1671,7 +1668,7 @@ footer .social-icons a:hover i {
   }
 
   .scroll-indicator {
-    bottom: 10px;
+    bottom: auto;
     font-size: 12px;
   }
 }
