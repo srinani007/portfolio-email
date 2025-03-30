@@ -1624,6 +1624,8 @@ footer .social-icons a:hover i {
     font-size: 12px; /* Smaller font size for mobile */
     bottom: 10px; /* Adjust position to fit smaller screens */
   }
+
+
 }
 
 /* Ensure the scroll indicator does not overlap with other elements */
