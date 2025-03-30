@@ -129,31 +129,8 @@ button:focus {
   }
 }
 
-body::before {
-  content: "Loading...";
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-size: 1.8rem;
-  font-family: 'Orbitron', sans-serif;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(0, 255, 255, 0.6);
-  animation: pulse 1.5s infinite;
-  z-index: 9999;
-  /* Ensures it stays above all other elements */
-  background: rgba(0, 0, 0, 0.85);
-  /* Adds a subtle background for better visibility */
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(254, 254, 254, 0.5);
-}
 
-body.loaded::before {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-}
+
 
 @keyframes pulse {
 
@@ -1286,10 +1263,7 @@ footer .social-icons a:hover i {
 
 /* General Media Queries */
 @media (max-width: 768px) {
-  body::before {
-    font-size: 1.5rem;
-    padding: 15px 25px;
-  }
+  
 
   .nav-items {
     display: none;
@@ -1559,10 +1533,7 @@ footer .social-icons a:hover i {
 
 
 @media (max-width: 480px) {
-  body::before {
-    font-size: 1.2rem;
-    padding: 10px 20px;
-  }
+
   .skills-grid,
   .projects-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
