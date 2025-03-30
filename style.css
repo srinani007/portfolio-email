@@ -1557,12 +1557,12 @@ footer .social-icons a:hover i {
   }
 
   .timeline-item {
-    padding-left: 15px;
-    margin-bottom: 30px;
+    padding-left: 10px;
+    margin-bottom: 25px;
   }
 
   .timeline-item h3 {
-    font-size: 18px;
+    font-size: 1.2em;
   }
 }
 
