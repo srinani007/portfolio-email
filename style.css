@@ -1625,10 +1625,7 @@ footer .social-icons a:hover i {
     padding: 8px 16px;
   }
 
-  .scroll-indicator {
-    bottom: auto;
-    font-size: 12px;
-  }
+
 }
 
 /* Ensure the scroll indicator does not overlap with other elements */
