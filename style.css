@@ -36,115 +36,7 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Scrollbar Styling */
-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 10px;
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary-color);
-}
-
-body::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-
-/* Accessibility Improvements */
-:focus {
-  outline: 2px solid #00ffff;
-  outline-offset: 2px;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-a:focus,
-button:focus {
-  outline: 2px solid #f7f7f7;
-  outline-offset: 2px;
-}
-
-/* Replace lines 67-114 with this improved loader implementation */
-.loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-}
-
-.loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.quantum-loader {
-  display: flex;
-  gap: 8px;
-}
-
-.quantum-dot {
-  width: 20px;
-  height: 20px;
-  background: #00ffff;
-  border-radius: 50%;
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-.quantum-dot:nth-child(2) {
-  animation-delay: 0.2s;
-  background: #ff00ff;
-}
-
-.quantum-dot:nth-child(3) {
-  animation-delay: 0.4s;
-  background: #00ffff;
-}
-
-@keyframes pulse {
-
-  0%,
-  100% {
-    transform: scale(0.8);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-}
-
-
-
-
-@keyframes pulse {
-
-  0%,
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translate(-50%, -50%) scale(1.1);
-    opacity: 0.9;
-  }
-}
+/* Responsive Navigation Bar */
 .responsive-nav {
   display: flex;
   justify-content: space-between;
@@ -160,100 +52,16 @@ button:focus {
   transition: var(--transition);
 }
 
-.responsive-nav a {
-  color: var(--text-color, #fff);
-  text-decoration: none;
-  font-weight: 700;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.responsive-nav a:hover {
-  background: var(--primary-color, #00ffff);
-  color: #0a0a23;
-}
-
-.responsive-nav .logo {
-  font-size: 1.5rem;
-  font-family: var(--font-primary, 'Orbitron', sans-serif);
-  color: var(--primary-color, #00ffff);
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-}
-
-.responsive-nav .menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.responsive-nav .menu-icon {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: var(--primary-color, #00ffff);
-  margin: 5px 0;
-  position: relative;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-.responsive-nav .menu-icon::before,
-.responsive-nav .menu-icon::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 3px;
-  background: var(--primary-color, #00ffff);
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-.responsive-nav .menu-icon::before {
-  top: -8px;
-}
-
-.responsive-nav .menu-icon::after {
-  bottom: -8px;
-}
-
-.responsive-nav .menu-toggle.active .menu-icon {
-  background: transparent;
-}
-
-.responsive-nav .menu-toggle.active .menu-icon::before {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.responsive-nav .menu-toggle.active .menu-icon::after {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-.responsive-nav .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.responsive-nav .nav-links a {
-  color: var(--text-color, #fff);
-  text-decoration: none;
-  font-weight: 700;
-  font-family: var(--font-secondary, 'Inter', sans-serif);
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.responsive-nav .nav-links a:hover {
-  background: var(--primary-color, #00ffff);
-  color: #0a0a23;
-}
-
 .nav-brand {
   display: flex;
   align-items: center;
   gap: 20px;
+  font-family: var(--font-primary);
+  font-size: 24px;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
 
@@ -267,141 +75,6 @@ button:focus {
   transition: transform 0.3s ease-in-out;
 }
 
-.nav-link {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 700;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: var(--transition);
-}
-.nav-items a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.nav-items a:hover {
-  background: var(--primary-color);
-  color: #0a0a23;
-}
-
-.nav-link:hover {
-  background: var(--primary-color);
-  color: #0a0a23;
-}
-
-.hamburger-line {
-  width: 20px;
-  height: 3px;
-  margin: 3px 0;
-  transition: var(--transition);
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  position: relative;
-  background: rgba(76, 74, 74, 0.416);
-  /* Semi-transparent background */
-  border-radius: 10px;
-  /* Smooth rounded corners */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  /* Adds depth */
-  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  z-index: 1000;
-  /* Ensures it stays above other elements */
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.nav-item.active {
-  border-bottom: 2px solid white;
-}
-
-nav .logo:hover {
-  color: #ff00ff;
-  /* Adds a modern hover effect */
-}
-
-nav .menu-toggle {
-  display: none;
-  /* Hidden by default for larger screens */
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-nav .menu-icon {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: #00ffff;
-  margin: 5px 0;
-  position: relative;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-nav .menu-icon::before,
-nav .menu-icon::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 3px;
-  background: #00ffff;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-nav .menu-icon::before {
-  top: -8px;
-}
-
-nav .menu-icon::after {
-  bottom: -8px;
-}
-
-nav .menu-toggle.active .menu-icon {
-  background: transparent;
-}
-
-nav .menu-toggle.active .menu-icon::before {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-nav .menu-toggle.active .menu-icon::after {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-
-nav .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-nav .nav-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-nav .nav-links a:hover {
-  background: #00ffff;
-  color: #0a0a23;
-}
 
 .menu-icon {
   display: block;
@@ -1270,19 +943,26 @@ footer .social-icons a:hover i {
     display: none;
     position: absolute;
     top: 100%;
+    left: 75%;
+    margin: 0;
+    /* Adjust the top position to be below the nav */
     right: 0;
     background: rgba(0, 0, 0, 0.95);
     width: 100%;
     flex-direction: column;
-    border-radius: 0 0 10px 10px;
-    padding: 15px;
+    border-radius: 0 0 20px 10px;
+    padding: 5px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
+    /* Adds depth */
+    z-index: 1001; /* Ensure it stays above the nav */
     border-radius: 0 0 10px 10px;
+    /* Smooth rounded corners for the dropdown */
+    transition: all 0.5s ease-in-out; /* Smooth transition for dropdown */
   }
 
   .nav-items.active {
     display: flex;
+    position: absolute;
   }
 
   .nav-link {
@@ -1528,42 +1208,101 @@ footer .social-icons a:hover i {
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* Additional adjustments for very small screens */
+  .container {
+    padding: 80px 15px; /* Reduced padding for smaller screens */
+  }
+  .hero-content h1 {
+    font-size: 1.5em; /* Smaller font size for the main heading */
+  }
+  .hero-content p {
+    font-size: 1.2em; /* Smaller font size for the paragraph */
+  }
+  .animated-text {
+    font-size: 1.4em; /* Smaller font size for animated text */
+  }
+  .cta-btn {
+    font-size: 0.8em; /* Smaller font size for buttons */
+    padding: 6px 12px; /* Reduced padding for smaller screens */
+  }
+  .cta-btn.secondary {
+    font-size: 0.8em; /* Smaller font size for secondary buttons */
+    padding: 6px 12px; /* Reduced padding for smaller screens */
+  }
+  .scroll-indicator {
+    font-size: 12px; /* Smaller font size for mobile */
+    bottom: 10px; /* Adjust position to fit smaller screens */
+  }
+  .menu-icon {
+    width: 25px; /* Smaller width for the menu icon */
+    height: 3px; /* Smaller height for the menu icon */
+  }
+  .menu-icon::before,
+  .menu-icon::after {
+    width: 25px; /* Ensure the before and after pseudo-elements match the smaller width */
+    height: 3px; /* Ensure the before and after pseudo-elements match the smaller height */
+  }
+  .menu-toggle.active .menu-icon::before {
+    transform: rotate(45deg) translate(3px, 3px); /* Adjust for smaller size */
+  }
+  .menu-toggle.active .menu-icon::after {
+    transform: rotate(-45deg) translate(3px, -3px); /* Adjust for smaller size */
+  }
+  .menu-toggle {
+    padding: 8px; /* Reduced padding for smaller screens */
+  }
+  .menu-toggle.active .menu-icon {
+    width: 25px; /* Ensure the active menu icon is also smaller */
+    height: 3px; /* Ensure the active menu icon is also smaller */
+  }
+  .menu-toggle.active .menu-icon::before,
+  .menu-toggle.active .menu-icon::after {
+    width: 25px; /* Ensure the before and after pseudo-elements match the smaller width */
+    height: 3px; /* Ensure the before and after pseudo-elements match the smaller height */
+  }
+  .menu-toggle.active .menu-icon::before {
+    transform: rotate(45deg) translate(3px, 3px); /* Adjust for smaller size */
+  }
+  .menu-toggle.active .menu-icon::after {
+    transform: rotate(-45deg) translate(3px, -3px); /* Adjust for smaller size */
+  }
 
   .skills-grid,
   .projects-grid {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 10px;
-    padding: 10px;
+    padding: 10px; /* Reduced padding for smaller screens */
+    font-size: 0.9em; /* Smaller font size for cards */
+    box-shadow: 0 2px 8px rgba(0, 255, 255, 0.3); /* Reduced shadow for smaller screens */
   }
-
-  h1 {
-    font-size: 28px;
+  .contact-wrapper {
+    padding: 10px; /* Reduced padding for smaller screens */
+    max-width: 100%; /* Ensure it takes full width */
   }
-
-  h2 {
-    font-size: 24px;
+  .contact-card {
+    gap: 10px; /* Reduced gap for smaller screens */
   }
-
-  h3 {
-    font-size: 18px;
+  .contact-link {
+    font-size: 0.9rem; /* Smaller font size for contact links */
+    padding: 6px 12px; /* Reduced padding for smaller screens */
   }
-
-  .section {
-    padding: 40px 15px;
+  .form-group input,
+  .form-group textarea {
+    padding: 8px; /* Reduced padding for smaller screens */
+    font-size: 0.8rem; /* Smaller font size for inputs and textareas */
+    border-radius: 6px; /* Slightly smaller border radius */
   }
-
-  .hero-content h1 {
-    font-size: 1.8rem;
+  .submit-btn {
+    padding: 8px 16px; /* Reduced padding for smaller screens */
+    font-size: 0.9rem; /* Smaller font size for the submit button */
+    box-shadow: 0 2px 10px rgba(0, 255, 255, 0.3); /* Reduced shadow for smaller screens */
   }
-
-  .timeline-item {
-    padding-left: 10px;
-    margin-bottom: 25px;
+  .hero {
+    padding: 60px 15px; /* Reduced padding for smaller screens */
   }
-
-  .timeline-item h3 {
-    font-size: 1.2em;
+  .cta-btn {
+    font-size: 0.8em; /* Smaller font size for buttons */
+    padding: 6px 12px; /* Reduced padding for smaller screens */
   }
 }
 
@@ -1605,28 +1344,6 @@ footer .social-icons a:hover i {
   }
 }
 
-/* Reduce the size of the animated text on smaller screens */
-@media (max-width: 768px) {
-  .hero-content p {
-    font-size: 1.5em;
-  }
-
-  .cta-btn {
-    font-size: 0.9em;
-    padding: 8px 16px;
-  }
-
-  .cta-btn.secondary {
-    font-size: 0.9em;
-    padding: 8px 16px;
-  }
-  .scroll-indicator {
-    font-size: 12px; /* Smaller font size for mobile */
-    bottom: 10px; /* Adjust position to fit smaller screens */
-  }
-
-
-}
 
 /* Ensure the scroll indicator does not overlap with other elements */
 .scroll-indicator {
