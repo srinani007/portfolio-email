@@ -27,8 +27,9 @@ You can view the live version here: [🌐 My Portfolio](https://srinani007.githu
 
 ## 📸 Screenshots
 
-> _(Add screenshots of your portfolio here — like homepage, project cards, etc.)_  
-> You can use tools like Snipping Tool or Lightshot to take and upload screenshots.
+![image](https://github.com/user-attachments/assets/fed87bd3-17da-458e-93d1-5b79aa9a93ec)
+ 
+
 
 ---
 
